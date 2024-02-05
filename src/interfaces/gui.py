@@ -86,6 +86,8 @@ class MainWindow(QMainWindow):
         mainUI = QWidget()  # This should be replaced with actual UI setup
         self.stackedWidget.addWidget(mainUI)
 
+        #TODO for Feb 5: Create a main UI widget and add components to the main layout. 
+
     def switch_to_main_ui(self):
         self.stackedWidget.setCurrentIndex(1)
     
