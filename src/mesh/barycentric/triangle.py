@@ -44,7 +44,7 @@ class TriangleMesh:
             print(f"Vertex {i}: {vertex} -> {self.vertex_map.get(i, 'Not mapped')}")
 
 mesh = TriangleMesh()
-p1 = mesh.add_vertex((1,0,0))
+p1 = mesh.add_vertex((10,0,0))
 p2 = mesh.add_vertex((0,1,0))
 p3 = mesh.add_vertex((0,0,1))
 mesh.add_triangle(p1,p2,p3)
