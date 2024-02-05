@@ -2,7 +2,7 @@ import sys
 import os 
 # sys.path.append('src/mesh/barycentric/triangle.py')
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QFileDialog, QLabel
-from ..mesh.barycentric.triangle import TriangleMesh
+from src.mesh.barycentric.triangle import TriangleMesh
 
 class MainWindow(QMainWindow):
     def __init__(self, mesh):
@@ -38,6 +38,16 @@ class MainWindow(QMainWindow):
         self.label.move(10, 10)
         self.label.resize(800, 600)
         self.show()  # Display the window
+    
+    def save(self):
+        """
+        Save the mesh to a file dialog.
+        """
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self, "QFileDialog.getSaveFileName()", "", "All Files (*);;OBJ Files (*.obj)", options=options)
+        if fileName:
+            self.mesh.save_to_obj(fileName)
     
     def loadModel(self):
         """
