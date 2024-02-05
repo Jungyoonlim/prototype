@@ -81,9 +81,16 @@ class MainWindow(QMainWindow):
         self.stackedWidget.addWidget(self.signInForm)
 
     def initMainUI(self):
-        # Placeholder for main UI setup
-        # For example, create a widget to represent your main UI and add it to the stacked widget
-        mainUI = QWidget()  # This should be replaced with actual UI setup
+        # Create a main UI widget
+        mainUI = QWidget()
+        mainLayout = QVBoxLayout()  # Or any other layout of your choice
+
+        # Add components to the mainLayout, for example:
+        loadModelButton = QPushButton("Load 3D Model", self)
+        loadModelButton.clicked.connect(self.loadModel)
+        mainLayout.addWidget(loadModelButton)
+
+        mainUI.setLayout(mainLayout)
         self.stackedWidget.addWidget(mainUI)
 
         #TODO for Feb 5: Create a main UI widget and add components to the main layout. 
