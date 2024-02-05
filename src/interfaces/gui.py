@@ -21,12 +21,17 @@ class MainWindow(QMainWindow):
     
     def initUI(self):
         """Initialize the UI window with title and size"""
-        self.setWindowTitle('3D model to 2d Parameterization')  # Set window title
-        self.setGeometry(100, 100, 800, 600)  # Set window position and size
+        self.setWindowTitle('3D model to 2d Parameterization')
+        self.setGeometry(100, 100, 800, 600)
 
         # Create and setup the file menu in the menu bar
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('File')
+        
+        # Create and setup the load action in the file menu
+        loadAction = QAction('Load', self)
+        loadAction.triggered.connect(self.loadModel)
+        fileMenu.addAction(loadAction)
         
         # Create and setup the save action in the file menu
         saveAction = QAction('Save', self)
@@ -36,8 +41,9 @@ class MainWindow(QMainWindow):
         # Create and setup the label for the window
         self.label = QLabel(self)
         self.label.move(10, 10)
-        self.label.resize(800, 600)
-        self.show()  # Display the window
+        self.label.resize(780, 580)  # Slightly smaller to ensure it fits within the window
+        self.label.setText("Load a 3D model to view its 2D parameterization.")  # Example text
+        self.show()
     
     def save(self):
         """
