@@ -16,6 +16,18 @@ class TriangleMesh:
                 elif line.startswith('f '):
                     _, v1, v2, v3 = line.split()
                     self.add_triangle(int(v1)-1, int(v2)-1, int(v3)-1)
+    
+    def calculate_uv_coordinates(self):
+        self.uvs = []
+        for vtx in self.vertices:
+            u = vtx[0]
+            v = vtx[1]
+            self.uvs.append((u,v))
+    
+    def display_uv_mapping(self):
+        """Display Vertices and their UV Mapping"""
+        for i, uv in enumerate(self.uvs):
+            print(f"Vertex {i}: UV -> {uv}")
 
 
     def add_vertex(self, p):
@@ -43,7 +55,11 @@ class TriangleMesh:
         for i, vertex in enumerate(self.vertices):
             print(f"Vertex {i}: {vertex} -> {self.vertex_map.get(i, 'Not mapped')}")
 
+    
 mesh = TriangleMesh()
+mesh.calculate_uv_coordinates()
+mesh.display_uv_mapping()
+
 p1 = mesh.add_vertex((10,0,0))
 p2 = mesh.add_vertex((0,1,0))
 p3 = mesh.add_vertex((0,0,1))
